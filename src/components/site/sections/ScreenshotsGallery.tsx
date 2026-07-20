@@ -9,7 +9,6 @@ import {
   Boxes,
   Users,
   BarChart3,
-  Building2,
   ChevronLeft,
   ChevronRight,
   Lock,
@@ -24,8 +23,7 @@ type MockKind =
   | "kitchen"
   | "inventory"
   | "crm"
-  | "reports"
-  | "admin";
+  | "reports";
 
 type Shot = {
   id: MockKind;
@@ -42,7 +40,6 @@ const SHOTS: Shot[] = [
   { id: "inventory", title: "Inventory", url: "app.restaurant360.io/inventory", icon: Boxes, Mock: InventoryMock },
   { id: "crm", title: "CRM", url: "app.restaurant360.io/crm", icon: Users, Mock: CRMMock },
   { id: "reports", title: "Reports", url: "app.restaurant360.io/reports", icon: BarChart3, Mock: ReportsMock },
-  { id: "admin", title: "Super Admin", url: "app.restaurant360.io/super-admin", icon: Building2, Mock: AdminMock },
 ];
 
 const cardEnter: Variants = {
@@ -68,7 +65,7 @@ export function ScreenshotsGallery() {
             Take a tour of <span className="text-gradient-orange">Restaurant360</span>
           </>
         }
-        description="Every module of the platform — from POS and Kitchen Display to CRM, Reports and multi-tenant Super Admin — designed for speed and clarity."
+        description="Every module of the platform — from POS and Kitchen Display to CRM and Reports — designed for speed and clarity."
       />
 
       <Reveal className="mt-12" delay={0.1}>
@@ -678,45 +675,6 @@ function ReportsMock() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function AdminMock() {
-  const rows = [
-    { name: "Spice Route", plan: "Enterprise", branches: 12, status: "Active" },
-    { name: "Cafe Mocha", plan: "Professional", branches: 5, status: "Active" },
-    { name: "Burger Hub", plan: "Starter", branches: 1, status: "Trial" },
-    { name: "Pizza Palace", plan: "Professional", branches: 8, status: "Active" },
-    { name: "Cloud Kitchen Co", plan: "Enterprise", branches: 24, status: "Active" },
-  ];
-  return (
-    <div className="overflow-hidden rounded-xl border border-border">
-      <div className="grid grid-cols-[1.5fr_1fr_0.7fr_0.8fr] gap-2 border-b border-border bg-brand-50/60 px-2.5 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-muted-foreground">
-        <span>Tenant</span>
-        <span>Plan</span>
-        <span>Branches</span>
-        <span>Status</span>
-      </div>
-      {rows.map((r) => (
-        <div
-          key={r.name}
-          className="grid grid-cols-[1.5fr_1fr_0.7fr_0.8fr] items-center gap-2 border-b border-border px-2.5 py-1.5 text-[10px] last:border-0"
-        >
-          <span className="truncate font-medium text-foreground">{r.name}</span>
-          <span className="text-muted-foreground">{r.plan}</span>
-          <span className="font-semibold text-foreground">{r.branches}</span>
-          <span className="flex items-center gap-1">
-            <span
-              className={cn(
-                "size-1.5 rounded-full",
-                r.status === "Active" ? "bg-green-500" : "bg-amber-500",
-              )}
-            />
-            <span className="text-muted-foreground">{r.status}</span>
-          </span>
-        </div>
-      ))}
     </div>
   );
 }

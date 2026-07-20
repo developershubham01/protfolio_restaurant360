@@ -4,7 +4,6 @@ import * as React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ChefHat,
-  ClipboardList,
   Utensils,
   UserRound,
   BarChart3,
@@ -55,15 +54,7 @@ const ITEMS: FloatItem[] = [
     depth: 40,
     delay: 1.2,
   },
-  {
-    icon: <ClipboardList className="size-5" />,
-    label: "Waiter",
-    sub: "Order #204",
-    className: "right-[5%] top-[46%]",
-    depth: 70,
-    delay: 0.3,
-    accent: "orange",
-  },
+
   {
     icon: <UserRound className="size-5" />,
     label: "Customer",

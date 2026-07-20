@@ -45,25 +45,11 @@ const FEATURES: Feature[] = [
     accent: "from-brand-500 to-amber-500",
   },
   {
-    icon: Users,
-    title: "CRM",
-    description:
-      "Guest profiles, loyalty tiers, and targeted campaign automation built-in.",
-    accent: "from-brand-600 to-brand-500",
-  },
-  {
     icon: BarChart3,
     title: "Analytics",
     description:
       "Live sales dashboards, menu-mix analysis, and demand forecast modeling.",
     accent: "from-amber-500 to-brand-600",
-  },
-  {
-    icon: UserCog,
-    title: "Staff Management",
-    description:
-      "Shifts, payroll, attendance, and performance analytics — all in one place.",
-    accent: "from-brand-500 to-brand-700",
   },
   {
     icon: Cloud,

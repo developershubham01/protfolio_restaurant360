@@ -10,8 +10,6 @@ import { KitchenDisplay } from "@/components/site/sections/KitchenDisplay";
 import { InventorySection } from "@/components/site/sections/InventorySection";
 import { CRMSection } from "@/components/site/sections/CRMSection";
 import { AIAnalytics } from "@/components/site/sections/AIAnalytics";
-import { TechStack } from "@/components/site/sections/TechStack";
-import { ArchitectureSection } from "@/components/site/sections/ArchitectureSection";
 import { SecuritySection } from "@/components/site/sections/SecuritySection";
 import { PerformanceSection } from "@/components/site/sections/PerformanceSection";
 import { ScreenshotsGallery } from "@/components/site/sections/ScreenshotsGallery";
@@ -36,8 +34,6 @@ export default function Home() {
         <InventorySection />
         <CRMSection />
         <AIAnalytics />
-        <TechStack />
-        <ArchitectureSection />
         <SecuritySection />
         <PerformanceSection />
         <ScreenshotsGallery />

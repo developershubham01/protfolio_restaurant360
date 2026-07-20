@@ -3,12 +3,10 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ShieldCheck,
   Crown,
   Store,
   Receipt,
   ChefHat,
-  ClipboardList,
   Boxes,
   Users,
   BarChart3,
@@ -47,20 +45,7 @@ type Module = {
 };
 
 const MODULES: Module[] = [
-  {
-    id: "super-admin",
-    title: "Super Admin",
-    short: "Multi-tenant control over every restaurant on the platform.",
-    long: "Govern the entire Restaurant360 cloud from a single command center. Provision tenants, manage white-label branding, monitor SLA breaches, and roll out updates globally without touching a single server.",
-    icon: ShieldCheck,
-    features: [
-      "Multi-tenant provisioning & RBAC matrix",
-      "White-label branding & custom domains",
-      "Global usage metering and billing engine",
-      "Audit trail with immutable event log",
-    ],
-    gradient: "from-brand-500 to-amber-500",
-  },
+
   {
     id: "restaurant-owner",
     title: "Restaurant Owner",
@@ -117,20 +102,7 @@ const MODULES: Module[] = [
     ],
     gradient: "from-brand-500 to-orange-600",
   },
-  {
-    id: "waiter",
-    title: "Waiter",
-    short: "Tableside ordering on phone or tablet.",
-    long: "Tableside ordering on any phone or tablet. Send orders instantly to KDS, modify on the fly, and fire courses at the perfect moment.",
-    icon: ClipboardList,
-    features: [
-      "Tableside ordering with modifiers",
-      "Course timing & fire-on-cue",
-      "Live table status & guest notes",
-      "Tip pooling & shift performance",
-    ],
-    gradient: "from-amber-400 to-brand-500",
-  },
+
   {
     id: "inventory",
     title: "Inventory",
@@ -299,7 +271,7 @@ export function SaaSModules() {
             <span className="text-gradient-orange">every team</span>
           </>
         }
-        description="Granular, role-based access across 12 specialized modules — from super-admin multi-tenant control to the line cook's KDS. Each persona gets exactly what they need, nothing they don't."
+        description="Granular, role-based access across 10 specialized modules — from the restaurant owner's cockpit to the line cook's KDS. Each persona gets exactly what they need, nothing they don't."
       />
 
       <Stagger

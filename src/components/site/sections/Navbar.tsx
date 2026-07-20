@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, ChefHat } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { MagneticButton } from "../shared/MagneticButton";
+import { ShimmerButton } from "../shared/ShimmerButton";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
@@ -33,25 +33,16 @@ export function Navbar() {
     >
       <nav
         className={cn(
-          "flex w-full max-w-6xl items-center justify-between gap-4 rounded-2xl px-4 py-2.5 transition-all duration-500 sm:px-5",
+          "flex w-full max-w-6xl items-center justify-between gap-4 rounded-full px-3.5 py-2 border transition-all duration-500 sm:px-4.5 bg-gradient-to-r shadow-glow-orange",
           scrolled
-            ? "glass-card shadow-premium"
-            : "border border-transparent bg-transparent",
+            ? "from-brand-600 via-brand-500 to-amber-500 border-brand-400/30 py-1.5"
+            : "from-brand-500 via-brand-600 to-amber-500 border-brand-400/20",
         )}
       >
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="relative grid size-9 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-orange-sm">
-            <ChefHat className="size-5" />
-            <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-amber-400 ring-2 ring-white" />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-base font-bold tracking-tight text-foreground">
-              Restaurant<span className="text-gradient-orange">360</span>
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-              Enterprise ERP
-            </span>
-          </span>
+        <a href="#top" className="flex items-center select-none transition-transform hover:scale-[1.02] active:scale-[0.98]">
+          <div className="rounded-full bg-white px-4 py-1.5 flex items-center justify-center shadow-sm">
+            <img src="/logo.svg" alt="Restaurant360 Logo" className="h-6.5 w-auto block" />
+          </div>
         </a>
 
         <div className="hidden items-center gap-1 lg:flex">
@@ -59,7 +50,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="relative rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="relative rounded-full px-3.5 py-1.5 text-sm font-medium text-white/90 transition-all duration-300 hover:text-white hover:bg-white/15"
             >
               {l.label}
             </a>
@@ -67,28 +58,23 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <MagneticButton
+          <ShimmerButton
             as="a"
             href="#contact"
-            className="px-4 py-2 text-foreground hover:bg-brand-50"
-          >
-            Sign in
-          </MagneticButton>
-          <MagneticButton
-            as="a"
-            href="#contact"
-            className="bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-2.5 text-white shadow-glow-orange-sm hover:shadow-glow-orange"
+            background="rgba(255, 255, 255, 1)"
+            shimmerColor="rgba(249, 115, 22, 0.7)"
+            className="text-brand-600 hover:text-brand-700 font-bold shadow-md px-5 py-2"
           >
             Book Demo
-          </MagneticButton>
+          </ShimmerButton>
         </div>
 
         <button
-          className="grid size-10 place-items-center rounded-xl border border-border bg-white/70 lg:hidden"
+          className="grid size-9 place-items-center rounded-full bg-white text-brand-600 shadow-sm lg:hidden hover:bg-brand-50 transition-colors"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? <X className="size-4.5" /> : <Menu className="size-4.5" />}
         </button>
       </nav>
 

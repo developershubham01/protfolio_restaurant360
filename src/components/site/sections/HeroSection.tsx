@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Play, ArrowRight, PhoneCall, Sparkles, Star } from "lucide-react";
-import { MagneticButton } from "../shared/MagneticButton";
+import { ShimmerButton } from "../shared/ShimmerButton";
 import { Particles } from "../shared/Particles";
 import { AnimatedCounter } from "../shared/AnimatedCounter";
 import { HeroScene } from "./HeroScene";
@@ -75,27 +75,30 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
           >
-            <MagneticButton
+            <ShimmerButton
               as="a"
               href="#platform"
-              className="bg-gradient-to-r from-brand-500 to-brand-600 px-6 py-3.5 text-white shadow-glow-orange hover:shadow-glow-orange"
+              background="rgba(249, 115, 22, 1)"
+              shimmerColor="rgba(255, 255, 255, 0.8)"
+              className="px-6 py-3.5 text-white shadow-glow-orange"
             >
               <Play className="size-4" /> Live Demo
-            </MagneticButton>
-            <MagneticButton
+            </ShimmerButton>
+            <ShimmerButton
               as="a"
               href="#features"
-              className="border border-brand-200 bg-white/80 px-6 py-3.5 text-foreground shadow-sm backdrop-blur hover:bg-brand-50"
+              background="rgba(255, 255, 255, 0.85)"
+              shimmerColor="rgba(249, 115, 22, 0.4)"
+              className="border border-brand-200/50 px-6 py-3.5 text-foreground shadow-sm backdrop-blur hover:bg-brand-50/50"
             >
               View Features <ArrowRight className="size-4" />
-            </MagneticButton>
-            <MagneticButton
-              as="a"
+            </ShimmerButton>
+            <a
               href="#contact"
-              className="px-6 py-3.5 text-brand-700 hover:bg-brand-50"
+              className="inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-300 px-6 py-3.5 text-brand-700 hover:bg-brand-50"
             >
               <PhoneCall className="size-4" /> Contact Sales
-            </MagneticButton>
+            </a>
           </motion.div>
 
           {/* Stats */}

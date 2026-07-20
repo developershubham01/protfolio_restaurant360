@@ -8,13 +8,12 @@ import {
   Boxes,
   Users,
   BarChart3,
-  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 import { Section, SectionHeading, Reveal } from "../shared";
 import { cn } from "@/lib/utils";
 
-type ViewId = "pos" | "kds" | "inventory" | "crm" | "reports" | "admin";
+type ViewId = "pos" | "kds" | "inventory" | "crm" | "reports";
 
 type View = {
   id: ViewId;
@@ -334,177 +333,19 @@ function ReportsView() {
   );
 }
 
-function AdminView() {
-  const branches = [
-    { name: "Mumbai · Bandra", status: "online" as const, orders: 142 },
-    { name: "Delhi · CP", status: "online" as const, orders: 98 },
-    { name: "Bangalore · Indira", status: "online" as const, orders: 124 },
-    { name: "Pune · Koregaon", status: "maintenance" as const, orders: 0 },
-  ];
-  return (
-    <div className="flex h-full flex-col gap-2.5 bg-white p-3.5">
-      <ViewHeader
-        color="from-slate-800 to-brand-700"
-        icon={ShieldCheck}
-        title="Super Admin"
-        pill="3 / 4 live"
-        pillTone="emerald"
-      />
-      <div className="grid grid-cols-2 gap-1.5">
-        <div className="rounded-lg bg-brand-50 p-1.5">
-          <div className="text-[7px] uppercase text-brand-700">Tenants</div>
-          <div className="font-display text-[11px] font-bold text-foreground">
-            24
-          </div>
-        </div>
-        <div className="rounded-lg bg-amber-50 p-1.5">
-          <div className="text-[7px] uppercase text-amber-700">Outlets</div>
-          <div className="font-display text-[11px] font-bold text-foreground">
-            312
-          </div>
-        </div>
-      </div>
-      <div className="flex-1 space-y-1">
-        {branches.map((b) => (
-          <div
-            key={b.name}
-            className="flex items-center justify-between rounded bg-slate-50 px-2 py-1"
-          >
-            <div className="flex items-center gap-1.5">
-              <div
-                className={cn(
-                  "size-1.5 rounded-full",
-                  b.status === "online" ? "bg-emerald-500" : "bg-amber-500",
-                )}
-              />
-              <div className="text-[8px] font-medium text-foreground">
-                {b.name}
-              </div>
-            </div>
-            <div className="text-[7px] text-muted-foreground">
-              {b.orders} orders
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 const VIEWS: View[] = [
   { id: "pos", label: "POS Dashboard", icon: LayoutDashboard, render: PosView },
   { id: "kds", label: "Kitchen Display", icon: ChefHat, render: KdsView },
   { id: "inventory", label: "Inventory", icon: Boxes, render: InventoryView },
   { id: "crm", label: "CRM", icon: Users, render: CrmView },
   { id: "reports", label: "Reports", icon: BarChart3, render: ReportsView },
-  { id: "admin", label: "Super Admin", icon: ShieldCheck, render: AdminView },
 ];
 
 /* ---------- Device mockups ---------- */
 
-function PhoneMock() {
-  return (
-    <div className="relative w-32 rounded-[2rem] border-4 border-slate-900 bg-slate-900 p-1 shadow-premium sm:w-36">
-      {/* notch */}
-      <div className="absolute left-1/2 top-1 h-1 w-10 -translate-x-1/2 rounded-full bg-slate-800" />
-      <div className="overflow-hidden rounded-[1.6rem] bg-white">
-        <div className="flex flex-col gap-2 p-2.5">
-          <div className="flex items-center justify-between">
-            <div className="text-[8px] font-bold text-foreground">Your Order</div>
-            <div className="size-3 rounded-full bg-brand-100" />
-          </div>
-          <div className="rounded-lg bg-brand-50 p-1.5">
-            <div className="text-[7px] uppercase tracking-wide text-brand-700">
-              Table 12 · 2 guests
-            </div>
-            <div className="mt-0.5 font-display text-[10px] font-bold text-foreground">
-              ₹1,240
-            </div>
-          </div>
-          {[
-            { n: "Margherita", q: 2, p: "₹480" },
-            { n: "Truffle Pasta", q: 1, p: "₹560" },
-            { n: "Coke", q: 2, p: "₹200" },
-          ].map((item) => (
-            <div key={item.n} className="flex items-center gap-1.5">
-              <div className="size-5 rounded bg-gradient-to-br from-brand-200 to-amber-200" />
-              <div className="flex-1">
-                <div className="text-[7px] font-semibold text-foreground">
-                  {item.n}
-                </div>
-                <div className="text-[6px] text-muted-foreground">
-                  Qty {item.q}
-                </div>
-              </div>
-              <div className="text-[7px] font-bold text-brand-600">{item.p}</div>
-            </div>
-          ))}
-          <button className="mt-1 rounded-md bg-gradient-to-r from-brand-500 to-brand-600 py-1 text-center text-[8px] font-semibold text-white">
-            Place Order
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
 
-function TabletMock() {
-  return (
-    <div className="relative w-44 rounded-[1.5rem] border-4 border-slate-900 bg-slate-900 p-1.5 shadow-premium sm:w-52">
-      <div className="absolute left-1/2 top-0.5 h-0.5 w-2 -translate-x-1/2 rounded-full bg-slate-700" />
-      <div className="overflow-hidden rounded-[1.1rem] bg-white">
-        <div className="flex flex-col gap-2 p-2.5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
-              <div className="size-3 rounded bg-gradient-to-br from-brand-500 to-brand-600" />
-              <div className="text-[8px] font-bold text-foreground">
-                Waiter POS
-              </div>
-            </div>
-            <div className="rounded-full bg-brand-100 px-1 py-0.5 text-[6px] font-semibold text-brand-700">
-              Riya · T4
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-1.5">
-            {["Starters", "Mains", "Desserts", "Drinks", "Sides", "Specials"].map(
-              (cat) => (
-                <div
-                  key={cat}
-                  className="rounded bg-brand-50 p-1 text-center text-[6px] font-semibold text-brand-700"
-                >
-                  {cat}
-                </div>
-              ),
-            )}
-          </div>
-          <div className="space-y-1">
-            {[
-              { n: "Paneer Tikka", p: "₹280" },
-              { n: "Butter Naan", p: "₹60" },
-            ].map((item) => (
-              <div
-                key={item.n}
-                className="flex items-center justify-between rounded border border-slate-100 px-1.5 py-1"
-              >
-                <div className="text-[7px] font-medium text-foreground">
-                  {item.n}
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="flex size-3 items-center justify-center rounded-full bg-brand-100 text-[7px] font-bold text-brand-700">
-                    +
-                  </div>
-                  <div className="text-[7px] font-bold text-foreground">
-                    {item.p}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+
+
 
 /* ---------- Main ---------- */
 
@@ -534,7 +375,7 @@ export function PlatformShowcase() {
             One platform. <span className="text-gradient-orange">Every screen.</span>
           </>
         }
-        description="From the back office to the kitchen, the waiter's tablet, and the customer's phone — Resto360 keeps every device in perfect sync. Click a tab to explore each view."
+        description="Unify your restaurant experience -from counter to kitchen to customer- with our all-in-one platform."
       />
 
       <div className="relative mx-auto mt-14 max-w-5xl">
@@ -592,51 +433,7 @@ export function PlatformShowcase() {
           </div>
         </Reveal>
 
-        {/* Desktop floating phone (left-bottom) */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, rotate: -6 }}
-          whileInView={{ opacity: 1, y: 0, rotate: -4 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-6 left-0 z-20 hidden lg:block"
-        >
-          <div className="absolute inset-0 -z-10 rounded-[2rem] bg-brand-400/30 blur-2xl" />
-          <PhoneMock />
-          <div className="mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Customer · Mobile Ordering
-          </div>
-        </motion.div>
 
-        {/* Desktop floating tablet (right-top) */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, rotate: 6 }}
-          whileInView={{ opacity: 1, y: 0, rotate: 3 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute right-0 top-10 z-20 hidden lg:block"
-        >
-          <div className="absolute inset-0 -z-10 rounded-[1.5rem] bg-amber-400/30 blur-2xl" />
-          <TabletMock />
-          <div className="mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Waiter · Tablet Ordering
-          </div>
-        </motion.div>
-
-        {/* Mobile / tablet stacked device row */}
-        <div className="mt-10 flex items-start justify-center gap-6 lg:hidden">
-          <Reveal direction="up" delay={0.25} className="flex flex-col items-center">
-            <PhoneMock />
-            <div className="mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              Customer
-            </div>
-          </Reveal>
-          <Reveal direction="up" delay={0.35} className="flex flex-col items-center">
-            <TabletMock />
-            <div className="mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              Waiter
-            </div>
-          </Reveal>
-        </div>
       </div>
 
       {/* Tab buttons */}
