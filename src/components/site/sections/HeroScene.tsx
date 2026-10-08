@@ -121,8 +121,6 @@ export function HeroScene() {
   return (
     <div
       ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
       className="perspective-2000 relative mx-auto aspect-square w-full max-w-[560px]"
     >
       {/* Ambient glow */}

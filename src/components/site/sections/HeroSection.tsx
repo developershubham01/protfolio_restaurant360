@@ -33,11 +33,18 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-brand-200/70 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-brand-700 shadow-sm backdrop-blur"
+            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-brand-200/70 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-brand-700 shadow-sm backdrop-blur"
           >
             <Sparkles className="size-3.5" />
-            Now with AI Insights & Multi-tenant Cloud ERP
-            <span className="rounded-full bg-brand-500 px-1.5 py-0.5 text-[10px] text-white">NEW</span>
+            <span>Restaurant360 is ABWcurious (OPC) Pvt. Ltd.</span>
+            <a
+              href="https://www.abwcurious.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 rounded-full bg-brand-500 px-2.5 py-0.5 text-[11px] font-medium text-white transition-colors hover:bg-brand-600"
+            >
+              www.abwcurious.com ↗
+            </a>
           </motion.div>
 
           <motion.h1
