@@ -13,7 +13,6 @@ import { AIAnalytics } from "@/components/site/sections/AIAnalytics";
 import { SecuritySection } from "@/components/site/sections/SecuritySection";
 import { PerformanceSection } from "@/components/site/sections/PerformanceSection";
 import { ScreenshotsGallery } from "@/components/site/sections/ScreenshotsGallery";
-import { PricingSection } from "@/components/site/sections/PricingSection";
 import { TestimonialsSection } from "@/components/site/sections/TestimonialsSection";
 import { ContactSection } from "@/components/site/sections/ContactSection";
 import { SiteFooter } from "@/components/site/sections/SiteFooter";
@@ -37,7 +36,6 @@ export default function Home() {
         <SecuritySection />
         <PerformanceSection />
         <ScreenshotsGallery />
-        <PricingSection />
         <TestimonialsSection />
         <ContactSection />
       </main>
