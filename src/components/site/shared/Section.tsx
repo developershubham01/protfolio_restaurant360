@@ -45,16 +45,8 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && (
-        <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand-200/70 bg-brand-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
-            <span className="size-1.5 rounded-full bg-brand-500 animate-glow-pulse" />
-            {eyebrow}
-          </span>
-        </Reveal>
-      )}
       <Reveal delay={0.05}>
-        <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
           {title}
         </h2>
       </Reveal>

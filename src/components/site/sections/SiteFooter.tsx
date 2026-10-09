@@ -33,12 +33,12 @@ export function SiteFooter() {
               </span>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              The enterprise Restaurant ERP platform unifying POS, kitchen, inventory,
+              The hybrid offline & online Restaurant ERP platform unifying POS, kitchen, inventory,
               CRM, analytics and AI for chains, cloud kitchens and franchises.
             </p>
 
             <div className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-brand-200/80 bg-brand-50/70 px-3 py-1.5 text-xs text-foreground/80">
-              <span>Restaurant360 is</span>
+              <span>Restaurant360 is a product of</span>
               <a
                 href="https://www.abwcurious.com"
                 target="_blank"
@@ -133,7 +133,7 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row">
           <p>
-            © {new Date().getFullYear()} Restaurant360 is{" "}
+            © {new Date().getFullYear()} Restaurant360 is a product of{" "}
             <a
               href="https://www.abwcurious.com"
               target="_blank"

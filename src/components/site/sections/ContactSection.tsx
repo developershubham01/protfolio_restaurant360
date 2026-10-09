@@ -248,7 +248,7 @@ export function ContactSection() {
         }
         description={
           <>
-            Restaurant360 is an initiative of{" "}
+            Restaurant360 is a product of{" "}
             <a
               href="https://www.abwcurious.com"
               target="_blank"

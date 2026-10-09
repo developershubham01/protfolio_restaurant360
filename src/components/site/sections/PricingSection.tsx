@@ -7,7 +7,7 @@ import {
   CheckCircle2,
   Crown,
   ArrowRight,
-  Cloud,
+  Wifi,
   Headphones,
   Lock,
   DatabaseBackup,
@@ -97,7 +97,7 @@ const PLANS: Plan[] = [
 ];
 
 const INCLUDES: { icon: LucideIcon; label: string }[] = [
-  { icon: Cloud, label: "Cloud sync" },
+  { icon: Wifi, label: "Offline + Online" },
   { icon: Headphones, label: "24/7 support" },
   { icon: Lock, label: "SSL security" },
   { icon: DatabaseBackup, label: "Daily backups" },

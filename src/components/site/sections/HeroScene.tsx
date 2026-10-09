@@ -11,7 +11,7 @@ import {
   Boxes,
   Bike,
   Tablet,
-  CloudUpload,
+  RefreshCw,
   Receipt,
   LayoutDashboard,
 } from "lucide-react";
@@ -214,8 +214,8 @@ export function HeroScene() {
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="flex items-center gap-1.5 rounded-full border border-brand-200/70 bg-white/90 px-3 py-1.5 shadow-premium backdrop-blur">
-            <CloudUpload className="size-3.5 text-brand-600" />
-            <span className="text-[10px] font-semibold text-foreground">Cloud Sync</span>
+            <RefreshCw className="size-3.5 text-brand-600" />
+            <span className="text-[10px] font-semibold text-foreground">Offline + Online Sync</span>
             <span className="size-1.5 animate-glow-pulse rounded-full bg-green-500" />
           </div>
         </motion.div>
@@ -240,7 +240,7 @@ function CentralHub() {
           Restaurant<span className="text-gradient-orange">360</span>
         </div>
         <p className="mt-1 text-[11px] font-medium text-muted-foreground">
-          Neon hub · 12 branches online
+          Live hub · 50+ restaurants online
         </p>
 
         {/* Mini analytics */}

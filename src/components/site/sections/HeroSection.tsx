@@ -1,24 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, ArrowRight, PhoneCall, Sparkles, Star } from "lucide-react";
+import { Play, ArrowRight, PhoneCall, Star } from "lucide-react";
 import { ShimmerButton } from "../shared/ShimmerButton";
 import { Particles } from "../shared/Particles";
 import { AnimatedCounter } from "../shared/AnimatedCounter";
 import { HeroScene } from "./HeroScene";
 
 const STATS = [
-  { value: 12000, suffix: "+", label: "Restaurants" },
+  { value: 50, suffix: "+", label: "Restaurants Onboarded" },
+  { value: 6, suffix: " Mo", label: "Since Launch" },
   { value: 99.99, decimals: 2, suffix: "%", label: "Uptime" },
-  { value: 48, suffix: "M+", label: "Orders / yr" },
-  { value: 4.9, decimals: 1, suffix: "★", label: "Avg. rating" },
+  { value: 4.9, decimals: 1, suffix: "★", label: "Client Rating" },
 ];
 
 export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative min-h-screen overflow-hidden bg-aurora pt-28 pb-16 sm:pt-32"
+      className="relative min-h-screen overflow-hidden bg-aurora pt-36 pb-20 sm:pt-44 lg:pt-48"
     >
       {/* Background layers */}
       <div className="absolute inset-0 -z-10 bg-grid mask-fade-b opacity-60" />
@@ -29,29 +29,11 @@ export function HeroSection() {
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         {/* Left */}
         <div className="relative z-10 text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-brand-200/70 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-brand-700 shadow-sm backdrop-blur"
-          >
-            <Sparkles className="size-3.5" />
-            <span>Restaurant360 is ABWcurious (OPC) Pvt. Ltd.</span>
-            <a
-              href="https://www.abwcurious.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full bg-brand-500 px-2.5 py-0.5 text-[11px] font-medium text-white transition-colors hover:bg-brand-600"
-            >
-              www.abwcurious.com ↗
-            </a>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
             Restaurant<span className="text-gradient-orange">360</span>
           </motion.h1>
@@ -62,7 +44,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-3 text-xl font-semibold text-foreground sm:text-2xl"
           >
-            Enterprise Restaurant ERP Platform
+            Hybrid Offline & Online Restaurant ERP Platform
           </motion.p>
 
           <motion.p
@@ -71,9 +53,9 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0"
           >
-            Cloud-integrated Restaurant ERP built for restaurant chains, cafés, food
-            courts, cloud kitchens, and franchises — unifying POS, kitchen, inventory,
-            CRM, analytics and AI in one cinematic platform.
+            A modern, fast-growing restaurant ERP launched just 6 months ago — already
+            trusted by 50+ restaurants, cafés, and cloud kitchens. Runs 100% uninterrupted
+            offline without internet, and seamlessly auto-syncs online in real time.
           </motion.p>
 
           <motion.div
@@ -153,7 +135,7 @@ export function HeroSection() {
                 <Star key={i} className="size-3.5 fill-current" />
               ))}
             </div>
-            <span>Trusted by 12,000+ restaurants worldwide</span>
+            <span>Trusted by 50+ restaurants in our first 6 months</span>
           </motion.div>
         </div>
 

@@ -32,14 +32,14 @@ export function Navbar() {
     >
       <nav
         className={cn(
-          "flex w-full max-w-6xl items-center justify-between gap-4 rounded-full px-3.5 py-2 border transition-all duration-500 sm:px-4.5 bg-gradient-to-r shadow-glow-orange",
+          "flex w-full max-w-6xl items-center justify-between gap-4 rounded-full px-3.5 py-2 border transition-all duration-500 sm:px-4.5 backdrop-blur-md shadow-xl",
           scrolled
-            ? "from-brand-600 via-brand-500 to-amber-500 border-brand-400/30 py-1.5"
-            : "from-brand-500 via-brand-600 to-amber-500 border-brand-400/20",
+            ? "bg-black/95 border-neutral-800 shadow-2xl py-1.5"
+            : "bg-neutral-950/90 border-neutral-800/80 shadow-black/40",
         )}
       >
         <a href="#top" className="flex items-center select-none transition-transform hover:scale-[1.02] active:scale-[0.98]">
-          <div className="rounded-full bg-white px-4 py-1.5 flex items-center justify-center shadow-sm">
+          <div className="rounded-full bg-white px-3.5 py-1.5 flex items-center justify-center shadow-xs">
             <img src="/logo.svg" alt="Restaurant360 Logo" className="h-6.5 w-auto block" />
           </div>
         </a>
@@ -49,7 +49,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="relative rounded-full px-3.5 py-1.5 text-sm font-medium text-white/90 transition-all duration-300 hover:text-white hover:bg-white/15"
+              className="relative rounded-full px-3.5 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white hover:bg-white/10"
             >
               {l.label}
             </a>
@@ -60,16 +60,16 @@ export function Navbar() {
           <ShimmerButton
             as="a"
             href="#contact"
-            background="rgba(255, 255, 255, 1)"
-            shimmerColor="rgba(249, 115, 22, 0.7)"
-            className="text-brand-600 hover:text-brand-700 font-bold shadow-md px-5 py-2"
+            background="rgba(249, 115, 22, 1)"
+            shimmerColor="rgba(255, 255, 255, 0.75)"
+            className="text-white font-semibold shadow-md px-5 py-2 hover:bg-brand-600"
           >
             Book Demo
           </ShimmerButton>
         </div>
 
         <button
-          className="grid size-9 place-items-center rounded-full bg-white text-brand-600 shadow-sm lg:hidden hover:bg-brand-50 transition-colors"
+          className="grid size-9 place-items-center rounded-full bg-white/10 text-white border border-white/15 shadow-xs lg:hidden hover:bg-white/20 transition-colors"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -83,7 +83,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute left-3 right-3 top-[72px] rounded-2xl glass-card p-4 lg:hidden"
+            className="absolute left-3 right-3 top-[72px] rounded-2xl border border-neutral-800 bg-neutral-950/95 backdrop-blur-xl p-4 shadow-2xl lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {NAV_LINKS.map((l) => (
@@ -91,7 +91,7 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-2.5 text-sm font-medium text-foreground hover:bg-brand-50"
+                  className="rounded-xl px-4 py-2.5 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white"
                 >
                   {l.label}
                 </a>
@@ -99,7 +99,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-4 py-2.5 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-md hover:from-brand-600 hover:to-brand-700"
               >
                 Book Demo
               </a>

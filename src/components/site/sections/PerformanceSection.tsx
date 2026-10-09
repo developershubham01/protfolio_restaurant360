@@ -10,6 +10,8 @@ import {
   Server,
   Users,
   Database,
+  CheckCircle2,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,7 +39,7 @@ const METRICS: Metric[] = [
   { icon: MonitorCheck, value: 50, prefix: "<", suffix: "ms", label: "Zero Latency POS" },
   { icon: RefreshCw, value: 100, prefix: "<", suffix: "ms", label: "Kitchen Sync" },
   { icon: Server, value: 80, prefix: "<", suffix: "ms", label: "Fast API Response" },
-  { icon: Users, value: 10, suffix: "K+", label: "Concurrent Users" },
+  { icon: Users, value: 50, suffix: "+", label: "Restaurants Live" },
   { icon: Database, value: 1, suffix: "ms", label: "Database Indexing" },
 ];
 
@@ -52,8 +54,8 @@ const cardEnter: Variants = {
 };
 
 const GAUGE_VALUE = 99.99;
-const ARC_RADIUS = 150;
-const ARC_LENGTH = Math.PI * ARC_RADIUS; // ≈ 471.24
+const ARC_RADIUS = 145;
+const ARC_LENGTH = Math.PI * ARC_RADIUS; // ≈ 455.53
 
 export function PerformanceSection() {
   return (
@@ -69,7 +71,7 @@ export function PerformanceSection() {
             Built for <span className="text-gradient-orange">speed</span> at scale
           </>
         }
-        description="Sub-second response times, real-time kitchen sync, and a globally distributed cloud that keeps every branch running fast — even at peak dinner rush."
+        description="Sub-second response times, real-time kitchen sync, and a hybrid architecture that keeps every branch running fast offline and online — even at peak dinner rush."
       />
 
       {/* Gauge hero */}
@@ -95,64 +97,66 @@ export function PerformanceSection() {
 
 function GaugeHero() {
   const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const inView = useInView(ref, { once: true, amount: 0.3 });
 
-  // Needle angle: -90° (pointing left) → ~89.98° (pointing right) for 99.99%.
-  const needleTarget = -90 + (GAUGE_VALUE / 100) * 180;
+  // Progress arc offset for 99.99%
   const fillOffset = ARC_LENGTH * (1 - GAUGE_VALUE / 100);
 
   return (
     <div
       ref={ref}
-      className="relative mx-auto grid w-full max-w-3xl place-items-center"
+      className="relative mx-auto flex w-full max-w-3xl flex-col items-center"
     >
-      {/* Background glow */}
+      {/* Background radial glow */}
       <div
-        className="pointer-events-none absolute size-[420px] rounded-full bg-brand-300/20 blur-3xl"
+        className="pointer-events-none absolute -top-8 size-[380px] rounded-full bg-gradient-to-b from-brand-300/30 to-amber-300/20 blur-3xl"
         aria-hidden
       />
 
-      {/* Gauge SVG */}
-      <div className="relative w-full max-w-[560px]">
+      {/* Gauge container */}
+      <div className="relative w-full max-w-[540px] px-4">
         <svg
-          viewBox="0 0 360 240"
-          className="w-full"
+          viewBox="0 0 380 230"
+          className="w-full drop-shadow-sm"
           role="img"
-          aria-label="Uptime gauge at 99.99 percent"
+          aria-label="High-availability Uptime gauge at 99.99%"
         >
           <defs>
             <linearGradient id="perfGaugeGrad" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#fdba74" />
-              <stop offset="45%" stopColor="#fb923c" />
-              <stop offset="75%" stopColor="#f97316" />
-              <stop offset="100%" stopColor="#f59e0b" />
+              <stop offset="35%" stopColor="#fb923c" />
+              <stop offset="70%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#ea580c" />
             </linearGradient>
-            <linearGradient id="perfNeedleGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ea580c" />
-              <stop offset="100%" stopColor="#f59e0b" />
-            </linearGradient>
+            <filter id="perfGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
           {/* Background track */}
           <path
-            d="M 30 200 A 150 150 0 0 1 330 200"
+            d="M 45 185 A 145 145 0 0 1 335 185"
             fill="none"
             stroke="rgba(234, 88, 12, 0.12)"
-            strokeWidth="16"
+            strokeWidth="18"
             strokeLinecap="round"
           />
 
-          {/* Tick marks */}
+          {/* Calibrated Tick Marks */}
           {Array.from({ length: 11 }).map((_, i) => {
             const angle = -180 + (i / 10) * 180; // -180° → 0°
             const rad = (angle * Math.PI) / 180;
-            const r1 = 130;
-            const r2 = i % 5 === 0 ? 116 : 122;
-            const round = (n: number) => Math.round(n * 100) / 100;
-            const x1 = round(180 + r1 * Math.cos(rad));
-            const y1 = round(200 + r1 * Math.sin(rad));
-            const x2 = round(180 + r2 * Math.cos(rad));
-            const y2 = round(200 + r2 * Math.sin(rad));
+            const isMajor = i % 5 === 0;
+            const r1 = 124;
+            const r2 = isMajor ? 112 : 118;
+            const x1 = Math.round((190 + r1 * Math.cos(rad)) * 100) / 100;
+            const y1 = Math.round((185 + r1 * Math.sin(rad)) * 100) / 100;
+            const x2 = Math.round((190 + r2 * Math.cos(rad)) * 100) / 100;
+            const y2 = Math.round((185 + r2 * Math.sin(rad)) * 100) / 100;
             return (
               <line
                 key={i}
@@ -160,69 +164,104 @@ function GaugeHero() {
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke="rgba(234, 88, 12, 0.28)"
-                strokeWidth={i % 5 === 0 ? 2 : 1}
+                stroke={isMajor ? "rgba(234, 88, 12, 0.45)" : "rgba(234, 88, 12, 0.22)"}
+                strokeWidth={isMajor ? 2.2 : 1.2}
                 strokeLinecap="round"
               />
             );
           })}
 
-          {/* Animated foreground arc */}
+          {/* Animated filled progress arc */}
           <motion.path
-            d="M 30 200 A 150 150 0 0 1 330 200"
+            d="M 45 185 A 145 145 0 0 1 335 185"
             fill="none"
             stroke="url(#perfGaugeGrad)"
-            strokeWidth="16"
+            strokeWidth="18"
             strokeLinecap="round"
             strokeDasharray={ARC_LENGTH}
             initial={{ strokeDashoffset: ARC_LENGTH }}
             animate={{ strokeDashoffset: inView ? fillOffset : ARC_LENGTH }}
-            transition={{ duration: 2.2, ease: "easeOut" }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
           />
 
-          {/* Needle */}
-          <motion.g
-            style={{ transformOrigin: "180px 200px" }}
-            initial={{ rotate: -90 }}
-            animate={{ rotate: inView ? needleTarget : -90 }}
-            transition={{ duration: 2.2, ease: "easeOut" }}
-          >
-            <line
-              x1="180"
-              y1="200"
-              x2="180"
-              y2="70"
-              stroke="url(#perfNeedleGrad)"
-              strokeWidth="4"
-              strokeLinecap="round"
+          {/* Glowing live beacon at the 99.99% endpoint */}
+          <g transform="translate(335, 185)">
+            <motion.circle
+              r="8"
+              fill="#ea580c"
+              opacity={0.35}
+              animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.1, 0.35] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            <circle cx="180" cy="70" r="6" fill="#ea580c" />
-          </motion.g>
+            <circle r="4.5" fill="#ea580c" filter="url(#perfGlow)" />
+            <circle r="2.2" fill="#ffffff" />
+          </g>
 
-          {/* Hub */}
-          <circle cx="180" cy="200" r="12" fill="#ffffff" stroke="#ea580c" strokeWidth="3" />
-          <circle cx="180" cy="200" r="4" fill="#ea580c" />
-
-          {/* Min/Max labels */}
-          <text x="30" y="222" fontSize="11" fill="rgba(15, 23, 42, 0.5)" textAnchor="middle">
+          {/* Scale benchmarks */}
+          <text
+            x="45"
+            y="212"
+            fontSize="12"
+            fontWeight="600"
+            fill="rgba(100, 116, 139, 0.75)"
+            textAnchor="middle"
+          >
             0%
           </text>
-          <text x="330" y="222" fontSize="11" fill="rgba(15, 23, 42, 0.5)" textAnchor="middle">
+          <text
+            x="190"
+            y="42"
+            fontSize="10"
+            fontWeight="500"
+            fill="rgba(100, 116, 139, 0.55)"
+            textAnchor="middle"
+          >
+            50%
+          </text>
+          <text
+            x="335"
+            y="212"
+            fontSize="12"
+            fontWeight="600"
+            fill="rgba(100, 116, 139, 0.75)"
+            textAnchor="middle"
+          >
             100%
           </text>
         </svg>
 
-        {/* Center readout */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-2 flex flex-col items-center">
-          <div className="font-display text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
+        {/* Center Readout: Clean, Spacious, and Zero Overlap */}
+        <div className="pointer-events-none absolute inset-x-0 top-[30%] flex flex-col items-center justify-center text-center">
+          <div className="font-display text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl leading-none">
             <span className="text-gradient-orange">
-              <AnimatedCounter value={GAUGE_VALUE} decimals={2} suffix="%" />
+              <AnimatedCounter value={GAUGE_VALUE} decimals={2} suffix="%" duration={1.6} />
             </span>
           </div>
-          <div className="mt-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-green-500 animate-glow-pulse" />
-            Uptime
+          <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-200/90 bg-emerald-50/90 px-3 py-1 text-xs font-semibold text-emerald-800 shadow-xs backdrop-blur">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+            </span>
+            <span>All Systems Operational</span>
+            <span className="text-emerald-300">•</span>
+            <span className="font-medium text-emerald-700">99.99% Uptime</span>
           </div>
+        </div>
+      </div>
+
+      {/* User-friendly reliability badges */}
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 text-xs text-muted-foreground">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-200/60 bg-white/80 px-3.5 py-1.5 shadow-xs backdrop-blur">
+          <CheckCircle2 className="size-3.5 text-emerald-600" />
+          <span>24/7/365 Real-Time Monitoring</span>
+        </div>
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-200/60 bg-white/80 px-3.5 py-1.5 shadow-xs backdrop-blur">
+          <Zap className="size-3.5 text-amber-500" />
+          <span>Sub-Second Offline Failover</span>
+        </div>
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-200/60 bg-white/80 px-3.5 py-1.5 shadow-xs backdrop-blur">
+          <ShieldCheck className="size-3.5 text-brand-600" />
+          <span>Enterprise SLA Guarantee</span>
         </div>
       </div>
     </div>

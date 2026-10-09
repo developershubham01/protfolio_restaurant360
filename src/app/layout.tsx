@@ -16,11 +16,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Restaurant360 — Enterprise Restaurant ERP Platform",
+  title: "Restaurant360 — Hybrid Offline & Online Restaurant ERP Platform",
   description:
-    "Cloud-integrated Restaurant ERP built for restaurant chains, cafés, food courts, cloud kitchens, and franchises. POS billing, kitchen display, inventory, CRM, analytics, AI insights and more.",
+    "Hybrid Offline & Online Restaurant ERP built for restaurant chains, cafés, food courts, cloud kitchens, and franchises. 100% offline-ready with seamless online auto-sync. POS billing, kitchen display, inventory, CRM, analytics, AI insights and more.",
   keywords: [
     "Restaurant ERP",
+    "Offline POS",
+    "Hybrid Restaurant ERP",
+    "Offline Restaurant Software",
     "Restaurant POS",
     "Cloud Kitchen Software",
     "Restaurant Management",
@@ -35,17 +38,17 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "Restaurant360 — Enterprise Restaurant ERP Platform",
+    title: "Restaurant360 — Hybrid Offline & Online Restaurant ERP Platform",
     description:
-      "Cloud-integrated Restaurant ERP for chains, cafés, food courts, cloud kitchens & franchises.",
+      "Hybrid Offline & Online Restaurant ERP for chains, cafés, food courts, cloud kitchens & franchises. Works 100% offline with real-time sync.",
     siteName: "Restaurant360",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Restaurant360 — Enterprise Restaurant ERP Platform",
+    title: "Restaurant360 — Hybrid Offline & Online Restaurant ERP Platform",
     description:
-      "Cloud-integrated Restaurant ERP for chains, cafés, food courts, cloud kitchens & franchises.",
+      "Hybrid Offline & Online Restaurant ERP for chains, cafés, food courts, cloud kitchens & franchises. Works 100% offline with real-time sync.",
   },
 };
 

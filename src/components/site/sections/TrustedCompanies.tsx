@@ -59,8 +59,8 @@ function WordmarkChip({ client }: { client: Client }) {
 }
 
 const FOOTER_STATS = [
-  { label: "active outlets", value: "12,000+", dot: "bg-brand-500" },
-  { label: "orders / year", value: "48M+", dot: "bg-amber-500" },
+  { label: "restaurants onboarded", value: "50+", dot: "bg-brand-500" },
+  { label: "months since launch", value: "6 Mo", dot: "bg-amber-500" },
   { label: "platform uptime", value: "99.99%", dot: "bg-brand-400" },
 ];
 
@@ -75,11 +75,11 @@ export function TrustedCompanies() {
         eyebrow="Trusted Companies"
         title={
           <>
-            Trusted by the{" "}
-            <span className="text-gradient-orange">best in hospitality</span>
+            Trusted by{" "}
+            <span className="text-gradient-orange">50+ restaurants</span>
           </>
         }
-        description="From independent fine-dining rooms to multi-brand franchise groups and cloud kitchen networks — Resto360 powers the entire hospitality spectrum."
+        description="A fast-growing new platform launched just 6 months ago — already trusted by 50+ independent restaurants, cafés, and cloud kitchens."
       />
 
       <div className="mt-14 flex flex-col gap-6">

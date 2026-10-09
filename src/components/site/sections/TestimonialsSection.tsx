@@ -91,13 +91,13 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 const AWARDS = [
-  { icon: Trophy, label: "G2 Leader — Winter 2025" },
-  { icon: Award, label: "Capterra Best Value — Restaurant Software" },
-  { icon: BadgeCheck, label: "ISO 27001 Certified" },
+  { icon: Trophy, label: "Fast Growing Restaurant Tech · 2026" },
+  { icon: Award, label: "50+ Active Restaurants in 6 Months" },
+  { icon: BadgeCheck, label: "ISO 27001 Ready" },
   { icon: Sparkles, label: "PCI-DSS Compliant Payments" },
-  { icon: Trophy, label: "SaaS Awards — Hospitality ERP of the Year" },
-  { icon: Award, label: "Featured in Restaurant Insider" },
-  { icon: BadgeCheck, label: "SOC 2 Type II" },
+  { icon: Trophy, label: "99.99% Verified Uptime" },
+  { icon: Award, label: "Offline-First Hybrid Architecture" },
+  { icon: BadgeCheck, label: "SOC 2 Ready Infrastructure" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -231,10 +231,10 @@ export function TestimonialsSection() {
         eyebrow="Testimonials"
         title={
           <>
-            Loved by <span className="text-gradient-orange">12,000+ restaurants</span>
+            Loved by <span className="text-gradient-orange">50+ restaurants</span> in 6 months
           </>
         }
-        description="From single-location cafés to multi-brand cloud kitchen empires, operators run their entire business on Restaurant360 — and the results speak for themselves."
+        description="Launched just 6 months ago, 50+ innovative restaurant operators and managers have already switched to Restaurant360 — and the feedback has been extraordinary."
       />
 
       {/* Masonry via CSS columns */}
@@ -252,7 +252,7 @@ export function TestimonialsSection() {
         <div className="glass-card relative overflow-hidden rounded-3xl px-4 py-5 shadow-premium">
           <div className="mb-3 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             <Trophy className="size-3.5 text-brand-500" />
-            Recognised &amp; certified worldwide
+            Modern Standards · Rapidly Growing
           </div>
           <Marquee duration={32} pauseOnHover>
             {AWARDS.map((a, i) => (

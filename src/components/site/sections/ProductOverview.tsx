@@ -8,7 +8,7 @@ import {
   Users,
   BarChart3,
   UserCog,
-  Cloud,
+  RefreshCw,
   Brain,
   ArrowUpRight,
   type LucideIcon,
@@ -52,10 +52,10 @@ const FEATURES: Feature[] = [
     accent: "from-amber-500 to-brand-600",
   },
   {
-    icon: Cloud,
-    title: "Cloud ERP",
+    icon: RefreshCw,
+    title: "Offline & Online Hybrid",
     description:
-      "Multi-tenant architecture syncs every branch and brand in real time.",
+      "Runs uninterrupted without internet and auto-syncs every branch seamlessly to the cloud when online.",
     accent: "from-brand-400 to-brand-600",
   },
   {
