@@ -40,7 +40,7 @@ export function Navbar() {
       >
         <a href="#top" className="flex items-center select-none transition-transform hover:scale-[1.02] active:scale-[0.98]">
           <div className="rounded-full bg-white px-3.5 py-1.5 flex items-center justify-center shadow-xs">
-            <img src="/logo.svg" alt="Restaurant360 Logo" className="h-6.5 w-auto block" />
+            <img src="/logo.png" alt="Restaurant360 Logo" className="h-6 w-auto block" />
           </div>
         </a>
 

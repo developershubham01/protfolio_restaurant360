@@ -236,8 +236,8 @@ function CentralHub() {
             ● Live
           </span>
         </div>
-        <div className="mt-4 font-display text-xl font-bold leading-none text-foreground">
-          Restaurant<span className="text-gradient-orange">360</span>
+        <div className="mt-3.5 flex items-center">
+          <img src="/logo.png" alt="Restaurant360" className="h-5 w-auto block" />
         </div>
         <p className="mt-1 text-[11px] font-medium text-muted-foreground">
           Live hub · 50+ restaurants online

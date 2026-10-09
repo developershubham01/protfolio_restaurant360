@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ChefHat,
   Mail,
   ArrowUpRight,
 } from "lucide-react";
@@ -24,13 +23,10 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr]">
           {/* Brand */}
           <Reveal>
-            <a href="#top" className="flex items-center gap-2.5">
-              <span className="relative grid size-10 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-orange-sm">
-                <ChefHat className="size-5" />
-              </span>
-              <span className="font-display text-lg font-bold tracking-tight">
-                Restaurant<span className="text-gradient-orange">360</span>
-              </span>
+            <a href="#top" className="inline-flex items-center">
+              <div className="rounded-2xl bg-white border border-brand-200/60 px-4 py-2 shadow-xs">
+                <img src="/logo.png" alt="Restaurant360 Logo" className="h-7 w-auto block" />
+              </div>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               The hybrid offline & online Restaurant ERP platform unifying POS, kitchen, inventory,
